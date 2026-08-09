@@ -36,3 +36,25 @@ Luego determina el porcentaje del periodo presidencial transcurrido y ajusta la 
 
 El archivo principal es:
 
+
+---
+
+## ❤️ Créditos
+
+- Silueta original proporcionada por el autor del proyecto.  
+- Código y estructura del widget desarrollados con ayuda de Microsoft Copilot.  
+
+---
+
+## 📜 Licencia
+
+Este proyecto puede distribuirse bajo la licencia MIT o Creative Commons, según prefieras.  
+Si no estás seguro, puedes dejarlo sin licencia por ahora.
+
+---
+
+## 🐣 Notas finales
+
+Este proyecto es amateur, experimental y hecho con cariño.  
+Si quieres añadir animaciones líquidas, modo oscuro, estadísticas adicionales o una versión institucional, ¡adelante!
+
