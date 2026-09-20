@@ -9,8 +9,6 @@ Este proyecto nació como un experimento divertido, visual y amateur, pero con c
 
 ## 🖼️ Vista previa
 
-*(Reemplaza esta imagen cuando tengas una captura real)*
-
 ![Vista previa del Abelardómetro](preview.png)
 
 ---
