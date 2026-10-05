@@ -22,12 +22,12 @@
     margin: 0 auto;
   }
 
-  /* Truco para eliminar fondo blanco del PNG */
   .silhouette {
     width: 100%;
     display: block;
   }
 
+  /* Capa 1: sombra descendente (se nota sobre zonas claras) */
   .fill-mask {
     position: absolute;
     top: 0;
@@ -48,15 +48,27 @@
     transition: height 2.5s ease-out;
 
     /* Recorta el relleno con la forma de la silueta */
-  -webkit-mask-image: url("abelardo.png");
-  mask-image: url("abelardo.png");
-  -webkit-mask-size: 300px auto;
-  mask-size: 300px auto;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: top;
-  mask-position: top;
-    
+    -webkit-mask-image: url("abelardo.png");
+    mask-image: url("abelardo.png");
+    -webkit-mask-size: 300px auto;
+    mask-size: 300px auto;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: top;
+    mask-position: top;
+  }
+
+  /* Capa 2: resalta el avance sobre zonas oscuras (cabello, traje).
+     "lighten" solo cambia los píxeles más oscuros que el color de la capa,
+     así que casi no afecta a la piel ni a la camisa. */
+  .fill-glow {
+    mix-blend-mode: lighten;
+    border-top: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(30, 80, 120, 0.9) 0%,
+      rgba(120, 25, 30, 0.9) 100%
+    );
   }
 
   .stats {
@@ -77,8 +89,9 @@
   <h2>Termómetro del Mandato Presidencial</h2>
 
   <div class="silhouette-wrapper">
-    <img src="abelardo.png" class="silhouette" id="silhouette">
-    <div class="fill-mask" id="fillMask"></div>
+    <img src="abelardo.png" class="silhouette" id="silhouette" alt="Abelardo de la Espriella">
+    <div class="fill-mask"></div>
+    <div class="fill-mask fill-glow"></div>
   </div>
 
   <div class="headline">
@@ -109,9 +122,9 @@
   document.getElementById("remaining").textContent = remainingDays;
 
   const silhouette = document.getElementById("silhouette");
-  const fillMask = document.getElementById("fillMask");
+  const fillMasks = document.querySelectorAll(".fill-mask"); // ambas capas
 
-  silhouette.onload = () => {
+  function startFill() {
     const height = silhouette.clientHeight;
     let fillHeight = height * (percent / 100);
 
@@ -119,11 +132,19 @@
     if (fillHeight < 4) fillHeight = 4;
 
     setTimeout(() => {
-      fillMask.style.height = fillHeight + "px";
+      fillMasks.forEach(el => {
+        el.style.height = fillHeight + "px";
+      });
     }, 300);
-  };
+  }
+
+  // Si la imagen ya estaba en caché, "onload" no se dispara: se comprueba antes
+  if (silhouette.complete && silhouette.naturalWidth > 0) {
+    startFill();
+  } else {
+    silhouette.onload = startFill;
+  }
 </script>
 
 </body>
 </html>
-
