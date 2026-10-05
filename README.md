@@ -32,7 +32,7 @@ Este proyecto nació como un experimento divertido, visual y amateur, pero con c
 El widget calcula la diferencia entre la fecha de inicio del mandato (7 ago 2026) y la fecha actual del navegador.  
 Luego determina el porcentaje del periodo presidencial transcurrido y ajusta la altura del relleno sobre la silueta.
 
-El archivo principal es:
+El archivo principal es: abelardo.png
 
 
 ---
@@ -47,7 +47,6 @@ El archivo principal es:
 ## 📜 Licencia
 
 Este proyecto puede distribuirse bajo la licencia MIT o Creative Commons, según prefieras.  
-Si no estás seguro, puedes dejarlo sin licencia por ahora.
 
 ---
 
