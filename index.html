@@ -46,6 +46,17 @@
 
     height: 0;
     transition: height 2.5s ease-out;
+
+    /* Recorta el relleno con la forma de la silueta */
+  -webkit-mask-image: url("abelardo.png");
+  mask-image: url("abelardo.png");
+  -webkit-mask-size: 300px auto;
+  mask-size: 300px auto;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: top;
+  mask-position: top;
+    
   }
 
   .stats {
